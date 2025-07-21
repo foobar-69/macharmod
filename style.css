@@ -2,19 +2,18 @@
 body {
     margin: 0;
     padding: 0;
-    /* --- UPDATED: Font changed to Poppins --- */
     font-family: 'Poppins', sans-serif;
-    overflow: hidden; /* Prevent scrollbars on the body */
+    overflow: hidden; /* Prevent scrollbars */
+    background-color: #a1c4fd; /* Fallback background */
 }
 
 #game-container {
     position: relative;
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
-    /* --- UPDATED: Softer, more pleasant background gradient --- */
+    width: 100vw;
+    height: 100vh;
     background: linear-gradient(to bottom, #a1c4fd 0%, #c2e9fb 100%);
     overflow: hidden;
-    cursor: crosshair; /* Swatter cursor */
+    cursor: crosshair;
 }
 
 /* Game canvas where the action happens */
@@ -27,32 +26,33 @@ body {
 /* UI elements like health and score */
 #ui-container {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    right: 20px;
+    top: 15px;
+    left: 15px;
+    right: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* --- UPDATED: Darker text color for better contrast --- */
     color: #2c3e50;
     text-shadow: 1px 1px 2px rgba(255,255,255,0.3);
-    z-index: 5; /* Ensure UI is above canvas */
+    z-index: 5;
+    gap: 10px; /* Add space between score and health */
 }
 
 #score-board {
-    font-size: 1.8em;
-    font-weight: 600; /* Poppins bold */
-    /* --- UPDATED: Frosted glass effect --- */
+    /* --- UPDATED: Responsive font size --- */
+    font-size: clamp(1em, 3vw, 1.8em);
+    font-weight: 600;
     background-color: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(5px);
-    padding: 8px 20px;
+    padding: 8px 15px;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    white-space: nowrap; /* Prevent score from wrapping */
 }
 
 #health-container {
-    width: 250px;
-    /* --- UPDATED: Frosted glass effect --- */
+    /* --- UPDATED: Responsive width --- */
+    width: clamp(120px, 35vw, 250px);
     background-color: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(5px);
     border-radius: 12px;
@@ -62,8 +62,7 @@ body {
 
 #health-bar {
     width: 100%;
-    height: 25px;
-    /* --- UPDATED: New health bar colors --- */
+    height: 20px; /* Slightly smaller for mobile */
     background-color: #28a745; /* Green */
     border-radius: 8px;
     transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
@@ -84,37 +83,52 @@ body {
     color: white;
     text-align: center;
     z-index: 10;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.screen-content {
+    max-width: 90%;
 }
 
 .screen h1 {
-    font-size: 4.5em; /* Slightly larger */
-    font-weight: 700; /* Poppins extra-bold */
-    margin-bottom: 20px;
+    /* --- UPDATED: Responsive font size for title --- */
+    font-size: clamp(2.5em, 10vw, 4.5em);
+    font-weight: 700;
+    margin-bottom: 0.25em;
     text-shadow: 3px 3px 8px rgba(0,0,0,0.8);
 }
 
 .screen p {
-    font-size: 1.5em;
-    margin-bottom: 30px;
+    font-size: clamp(1em, 4vw, 1.5em);
+    margin-bottom: 1.5em;
+}
+
+/* --- NEW: Button group for better mobile layout --- */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
 .screen button {
-    padding: 15px 35px; /* A bit wider */
-    font-size: 1.2em;
+    padding: 12px 30px;
+    font-size: clamp(1em, 3.5vw, 1.2em);
     font-weight: 600;
     border: none;
-    border-radius: 50px; /* Pill-shaped buttons */
+    border-radius: 50px;
     cursor: pointer;
-    /* --- UPDATED: New button colors --- */
-    background-color: #007bff; /* A nice blue */
+    background-color: #007bff;
     color: white;
     transition: background-color 0.3s, transform 0.2s;
-    margin: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 280px;
 }
 
 .screen button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
     transform: scale(1.05);
 }
 
@@ -124,4 +138,14 @@ body {
 
 #game-over-screen {
     display: none;
+}
+
+/* Media query for wider screens like tablets and desktops */
+@media (min-width: 768px) {
+    .button-group {
+        flex-direction: row; /* Buttons side-by-side on larger screens */
+    }
+    #health-bar {
+        height: 25px; /* Restore larger health bar */
+    }
 }
