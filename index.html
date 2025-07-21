@@ -1,28 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Mosquito Attack Game</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mosquito Attack</title>
+    <!-- Link to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Link to Stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
 <body>
-    <canvas id="gameCanvas"></canvas>
-    <div id="menu">
-        <h1>🦟 Mosquito Attack! 🦟</h1>
-        <p>Select difficulty level:</p>
-        <button id="easyBtn">Easy</button>
-        <button id="mediumBtn">Medium</button>
-        <button id="hardBtn">Hard</button>
-    </div>
-    <div id="gameOver">
-        <h1>Game Over!</h1>
-        <p id="finalScore">Score: 0</p>
-        <button id="restartBtn">Play Again</button>
-    </div>
-    <div id="scoreDisplay">Score: 0</div>
-    <div id="healthDisplay">❤️ 100%</div>
-    <div id="difficultyDisplay"></div>
 
-    <script src="game.js"></script>
+    <div id="game-container">
+        <!-- The main canvas for the game -->
+        <canvas id="game-canvas"></canvas>
+
+        <!-- UI elements displayed over the canvas -->
+        <div id="ui-container">
+            <div id="score-board">Score: 0</div>
+            <div id="health-container">
+                <div id="health-bar"></div>
+            </div>
+        </div>
+
+        <!-- Start Screen for level selection -->
+        <div id="start-screen" class="screen">
+            <div>
+                <h1>Mosquito Attack</h1>
+                <p>Select a difficulty level to begin.</p>
+                <button id="easy-btn">Easy</button>
+                <button id="medium-btn">Medium</button>
+                <button id="hard-btn">Hard</button>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="game-over-screen" class="screen">
+            <div>
+                <h1>Game Over</h1>
+                <p id="final-score"></p>
+                <button id="restart-btn">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
